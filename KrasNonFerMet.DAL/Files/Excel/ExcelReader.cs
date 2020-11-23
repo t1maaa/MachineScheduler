@@ -1,14 +1,33 @@
-﻿namespace KrasNonFerMet.DAL.Files.Excel
+﻿using System;
+
+namespace KrasNonFerMet.DAL.Files.Excel
 {
     public class ExcelReader : IExcelReader
     {
-        public string DirectoryPath { get; set; }
+        public string DirectoryName { get; set; }
         public string Filename { get; set; }
+        public string Fullname { get; set; }
 
         public ExcelReader(string directory, string filename)
         {
-            DirectoryPath = directory;
+            DirectoryName = directory;
             Filename = filename;
+
+			//TODO:
+            //if (directory.EndsWith("\\"))
+            //{
+            //    if (filename.StartsWith("\\"))
+            //    {
+
+            //    }
+            //}
+			
+            Fullname = String.Concat(new[] {directory,"\\", filename});
+        }
+
+        public ExcelReader(string fullname)
+        {
+            Fullname = fullname;
         }
     }
 }

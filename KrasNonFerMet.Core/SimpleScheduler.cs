@@ -15,8 +15,8 @@ namespace KrasNonFerMet.Core
             MachineSchedules = new List<MachineSchedule>();
         }
 
-        public List<MachineSchedule> MakeSchedule(List<Consignment> consignments, List<Machine> machines,
-            List<Nomenclature> nomenclatures, List<Operation> operations)
+        public List<MachineSchedule> MakeSchedule(IEnumerable<Consignment> consignments, IEnumerable<Machine> machines,
+            IEnumerable<Nomenclature> nomenclatures, IEnumerable<Operation> operations)
         {
             if (!consignments?.Any() ?? true) throw new ArgumentException("Consignments list null or empty");
             if (!machines?.Any() ?? true) throw new ArgumentException("Machines list null or empty");

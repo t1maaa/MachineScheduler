@@ -15,7 +15,7 @@ namespace KrasNonFerMet.DAL.Files.Excel
                 return new ExcelPackage(fileInfo);
             }
 
-            throw new FileNotFoundException(String.Concat(new[] {"File ", FullPath, " not found"}));
+            throw new FileNotFoundException(String.Concat(new[] {"File ", Fullname, " not found"}));
         }
 
         public ExcelWorksheets GetWorksheets()

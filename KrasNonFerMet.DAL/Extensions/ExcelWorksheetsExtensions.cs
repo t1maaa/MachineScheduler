@@ -14,8 +14,8 @@ namespace KrasNonFerMet.DAL.Extensions
             // duplicates = null;
             if (totalRows != null && totalRows > 0)
             {
-                switch (typeof(T)) //TODO: Are Unique Id guaranteed? To HashSet/Dictionary?
-                {
+                switch (typeof(T)) //TODO: Are Unique Id guaranteed? To HashSet/Dictionary? 
+                {                   //TODO: Check that the file matches to the type
                     case var _ when typeof(T) == typeof(Machine):
                         List<Machine> machines = new List<Machine>();
                         for (int i = 1; i <= totalRows; i++)
@@ -34,7 +34,7 @@ namespace KrasNonFerMet.DAL.Extensions
                                         Id = id,
                                         Name = name
                                     });
-                                }//проверить остальные столбцы, если совпадает просто скипнуть, если нет то закинуть в дупликаты
+                                }//check another columns, if equals to existed id => skip, if not then push to duplicates
                                 */
                                 string name = worksheet.Cells[i, 2].Value.ToString();
                                 if (!string.IsNullOrWhiteSpace(name))
@@ -49,7 +49,7 @@ namespace KrasNonFerMet.DAL.Extensions
                         }
 
                         return machines as List<T>;
-
+                        
                     case var _ when typeof(T) == typeof(Consignment):
                         List<Consignment> consignments = new List<Consignment>();
                         for (int i = 1; i <= totalRows; i++)

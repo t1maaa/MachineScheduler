@@ -24,28 +24,33 @@
             <ColumnDefinition></ColumnDefinition>
         </Grid.ColumnDefinitions>
         <GroupBox Grid.Column="0" Grid.Row="0" Header="Consignments" Margin="5">
-            <StackPanel Orientation="Horizontal">
-                <TextBox x:Name="TbConsignmentsPath" Text="" Width="125" VerticalAlignment="Stretch" Height="25" Margin="5"></TextBox>
-                <Button x:Name="BtnConsignments" Content="Open File" Width="75" Height="25" VerticalContentAlignment="Center" Margin="5" Click="BtnConsignments_Click" />
+            <StackPanel Orientation="Horizontal" Name="Consignment">
+                <TextBox x:Name="TbConsignmentsPath" Text="Path to file" Width="125" VerticalAlignment="Stretch" Height="25" Margin="5"  GotFocus="ClearTextBox_MouseLeftButtonUp"></TextBox>
+                <Button x:Name="BtnConsignments" Content="Open File" Width="75" Height="25" VerticalContentAlignment="Center" Margin="5" Click="OpenFile_Click" />
             </StackPanel>
         </GroupBox>
+        <DataGrid Grid.Row="1" Grid.Column="0" Grid.RowSpan="6" Name="DgConsignments"></DataGrid>
         <GroupBox Grid.Column="1" Grid.Row="0" Header="Machines" Margin="5">
-            <StackPanel Orientation="Horizontal">
-                <TextBox x:Name="TbMachinesPath" Text="Path to file"  Width="125" VerticalAlignment="Stretch" Height="25" Margin="5"></TextBox>
-                <Button x:Name="BtnMachines" Content="Open File" Width="75" Height="25" VerticalContentAlignment="Center" Margin="5" />
+            <StackPanel Orientation="Horizontal" Name="Machine">
+                <TextBox x:Name="TbMachinesPath" Text="Path to file"  Width="125" VerticalAlignment="Stretch" Height="25" Margin="5"  GotFocus="ClearTextBox_MouseLeftButtonUp"></TextBox>
+                <Button x:Name="BtnMachines" Content="Open File" Width="75" Height="25" VerticalContentAlignment="Center" Margin="5" Click="OpenFile_Click" />
             </StackPanel>
         </GroupBox>
-        <GroupBox Grid.Column="2" Grid.Row="0" Header="Nomenclature" Margin="5">
-            <StackPanel Orientation="Horizontal">
-                <TextBox x:Name="TbNomenclaturesPath" Text="Path to file"  Width="125" VerticalAlignment="Stretch" Height="25" Margin="5"></TextBox>
-                <Button x:Name="BtnNomenclature" Content="Open File" Width="75" Height="25" VerticalContentAlignment="Center" Margin="5" />
+        <DataGrid Grid.Row="1" Grid.Column="1" Grid.RowSpan="6" Name="DgMachines"></DataGrid>
+        <GroupBox Grid.Column="2" Grid.Row="0" Header="Nomenclatures" Margin="5">
+            <StackPanel Orientation="Horizontal" Name="Nomenclature">
+                <TextBox x:Name="TbNomenclaturesPath" Text="Path to file"  Width="125" VerticalAlignment="Stretch" Height="25" Margin="5"  GotFocus="ClearTextBox_MouseLeftButtonUp"></TextBox>
+                <Button x:Name="BtnNomenclature" Content="Open File" Width="75" Height="25" VerticalContentAlignment="Center" Margin="5" Click="OpenFile_Click" />
             </StackPanel>
         </GroupBox>
+        <DataGrid Grid.Row="1" Grid.Column="2" Grid.RowSpan="6" Name="DgNomenclatures"></DataGrid>
         <GroupBox Grid.Column="3" Grid.Row="0" Header="Operations" Margin="5">
-            <StackPanel Orientation="Horizontal">
-                <TextBox x:Name="TbOperationsPath" Text="Path to file"  Width="125" VerticalAlignment="Stretch" Height="25" Margin="5"></TextBox>
-                <Button x:Name="BtnOperations" Content="Open File" Width="75" Height="25" VerticalContentAlignment="Center" Margin="5" />
+            <StackPanel Orientation="Horizontal" Name="Operation">
+                <TextBox x:Name="TbOperationsPath" Text="Path to file"  Width="125" VerticalAlignment="Stretch" Height="25" Margin="5"  GotFocus="ClearTextBox_MouseLeftButtonUp"></TextBox>
+                <Button x:Name="BtnOperations" Content="Open File" Width="75" Height="25" VerticalContentAlignment="Center" Margin="5" Click="OpenFile_Click" />
             </StackPanel>
         </GroupBox>
+        <DataGrid Grid.Row="1" Grid.Column="3" Grid.RowSpan="6" Name="DgOperations"></DataGrid>
+        <Button Grid.Row="7" Grid.Column="3" Margin="5" Name="BtnScheduleWindow" Content="Schedule" Click="BtnScheduleWindow_Click"></Button>
     </Grid>
 </Window>

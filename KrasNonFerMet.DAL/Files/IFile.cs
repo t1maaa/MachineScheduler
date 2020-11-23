@@ -6,12 +6,19 @@ namespace KrasNonFerMet.DAL.Files
 {
     public interface IFile
     {
-        public string DirectoryPath { get; set; }
+        public string DirectoryName { get; set; }
         public string Filename { get; set; }
-        public string FullPath => String.Concat(new[] {DirectoryPath, Filename});
+        public string Fullname => String.Concat(new[] {DirectoryName, Filename});
+        
+        public FileInfo GetFileInfo() //TODO: Make Property
+        {
+            var fileInfo = new FileInfo(Fullname);
 
-        public bool IsExist(IFileInfo fileInfo) => fileInfo.Exists;
+            DirectoryName ??= fileInfo.DirectoryName;
+            Filename ??= fileInfo.Name;
 
-        public FileInfo GetFileInfo() => new FileInfo(FullPath);
+            return fileInfo;
+        }
+
     }
 }

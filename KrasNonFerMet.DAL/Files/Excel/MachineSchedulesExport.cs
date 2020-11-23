@@ -12,7 +12,7 @@ namespace KrasNonFerMet.DAL.Files.Excel
     public class MachineSchedulesExport : IExcelSchedulesExport<MachineSchedule>
     {
         public ExportMode ExportMode { get; set; }
-        public string DirectoryPath { get; set; }
+        public string DirectoryName { get; set; }
         public string Filename { get; set; }
 
         public List<MachineSchedule> Schedules { get; set; }
@@ -54,7 +54,7 @@ namespace KrasNonFerMet.DAL.Files.Excel
                         ExcelPackage.Workbook.Worksheets.Add($"Schedule_{machineSchedule.Id}")
                             .Cells["A1"].LoadFromCollection(machineSchedule.Schedule, true);
                         Directory.CreateDirectory(file.DirectoryName);
-                        ExcelPackage.SaveAs(new FileInfo($"{file.FullName + $"_{machineSchedule.Id}.xlsx"}"));
+                        ExcelPackage.SaveAs(new FileInfo($"{ file.FullName.Substring(0, file.FullName.Length - file.Extension.Length) + $"_{machineSchedule.Id}.xlsx"}"));
                     }
                    
                     break;
