@@ -4,8 +4,8 @@
 ## Get latest from https://github.com/github/gitignore/blob/master/VisualStudio.gitignore
 
 #Project-specific files
-KrasNonFerLib.Core/Excluded/
-KrasNonFerMet.CoreTests/Excluded/
+MachineScheduler.UI/Properties/launchSettings.json
+MachineScheduler.UI/Properties/PublishProfiles/
 
 # User-specific files
 *.rsuser
@@ -342,3 +342,4 @@ ASALocalRun/
 
 # BeatPulse healthcheck temp database
 healthchecksdb
+/MachineScheduler.sln

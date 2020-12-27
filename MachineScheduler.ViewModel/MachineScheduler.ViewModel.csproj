@@ -1,0 +1,22 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net5.0-windows</TargetFramework>
+    <UseWPF>true</UseWPF>
+    <AssemblyName>MachineScheduler.ViewModel</AssemblyName>
+    <RootNamespace>MachineScheduler.ViewModel</RootNamespace>
+    <Authors>Timur Indichenko</Authors>
+    <Company>Timur Indichenko</Company>
+    <Product>MachineScheduler.ViewModel</Product>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="LiveCharts.Wpf.NetCore3" Version="0.9.7" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\MachineScheduler.Core\MachineScheduler.Core.csproj" />
+    <ProjectReference Include="..\MachineScheduler.DAL\MachineScheduler.DAL.csproj" />
+  </ItemGroup>
+
+</Project>

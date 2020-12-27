@@ -1,0 +1,40 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net5.0-windows7.0</TargetFramework>
+    <UseWPF>true</UseWPF>
+    <StartupObject>MachineScheduler.UI.App</StartupObject>
+    <AssemblyName>MachineScheduler.UI</AssemblyName>
+    <RootNamespace>MachineScheduler.UI</RootNamespace>
+    <PackageId>MachineScheduler.UI</PackageId>
+    <Authors>Timur Indichenko</Authors>
+    <Company>Timur Indichenko</Company>
+    <Product>MachineScheduler.UI</Product>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="LiveCharts.Wpf.NetCore3" Version="0.9.7" />
+    <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="5.0.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Update="Properties\Settings.Designer.cs">
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+    </Compile>
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\MachineScheduler.ViewModel\MachineScheduler.ViewModel.csproj" />
+  </ItemGroup>
+
+</Project>

@@ -1,0 +1,19 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net5.0</TargetFramework>
+    <AssemblyName>MachineScheduler.Core</AssemblyName>
+    <RootNamespace>MachineScheduler.Core</RootNamespace>
+    <IsPackable>false</IsPackable>
+    <PackageId>MachineScheduler.Core</PackageId>
+    <PackageVersion />
+    <Authors>Timur Indichenko</Authors>
+    <Company />
+    <Product>MachineScheduler.Core</Product>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\MachineScheduler.DAL\MachineScheduler.DAL.csproj" />
+  </ItemGroup>
+
+</Project>

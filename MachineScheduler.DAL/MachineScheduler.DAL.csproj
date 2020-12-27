@@ -1,0 +1,19 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <LangVersion>9</LangVersion>
+    <TargetFramework>net5.0</TargetFramework>
+    <AssemblyName>MachineScheduler.DAL</AssemblyName>
+    <RootNamespace>MachineScheduler.DAL</RootNamespace>
+    <PackageId>MachineScheduler.DAL</PackageId>
+    <Authors>Timur Indichenko</Authors>
+    <Company>Timur Indichenko</Company>
+    <Product>MachineScheduler.DAL</Product>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="EPPlus" Version="4.5.3.3" />
+  </ItemGroup>
+
+
+</Project>
