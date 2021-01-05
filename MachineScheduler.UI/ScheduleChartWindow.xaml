@@ -6,9 +6,8 @@
         xmlns:local="clr-namespace:MachineScheduler.UI"
         xmlns:lvc="clr-namespace:LiveCharts.Wpf;assembly=LiveCharts.Wpf"
         mc:Ignorable="d" WindowStartupLocation="CenterOwner"
-        Title="ScheduleChartWindow" Height="600" Width="1000" Activated="ScheduleChartWindow_OnActivated" Closing="ScheduleChartWindow_OnClosing" >
+        Title="ScheduleChartWindow" Height="600" Width="1000" Activated="ScheduleChartWindow_OnActivated" Closing="ScheduleChartWindow_OnClosing">
     <Grid>
-        
         <Grid.RowDefinitions>
             <RowDefinition></RowDefinition>
             <RowDefinition></RowDefinition>
@@ -47,8 +46,5 @@
                 <lvc:DefaultTooltip SelectionMode="OnlySender" ShowTitle="False" ShowSeries="False"></lvc:DefaultTooltip>
             </lvc:CartesianChart.DataTooltip>
         </lvc:CartesianChart>
-        <!--
-        <Button Grid.Column="4" Grid.Row="9" Name="BtnExport" Height="25" HorizontalAlignment="Stretch" VerticalAlignment="Center" Margin="5" Content="Export to Excel" Click="BtnExport_Click" ></Button>
-    -->
     </Grid>
 </Window>

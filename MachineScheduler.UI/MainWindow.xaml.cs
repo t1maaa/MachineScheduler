@@ -74,7 +74,7 @@ namespace MachineScheduler.UI
             //_settingsWindow = new SettingsWindow();
 
         }
-        
+
         private void BtnOpenFile_Click(object sender, RoutedEventArgs e)
         {
             var senderParent = ((FrameworkElement)(((Button)sender).Parent));
@@ -130,14 +130,11 @@ namespace MachineScheduler.UI
                     MessageBoxImage.Error);
                 return;
             }
-
-
-            _scheduleChartWindow.Owner = this;
+            
             if (_scheduleChartWindow.Visibility == Visibility.Visible)
                 _scheduleChartWindow.Activate();
             else
             {
-               // _scheduleChartWindow.Draw();
                 _scheduleChartWindow.Show();
             }
         }
@@ -151,24 +148,20 @@ namespace MachineScheduler.UI
                 SaveFileDialog saveFileDialog = new SaveFileDialog
                 {
                     InitialDirectory = Directory.GetCurrentDirectory(),
-                    Filter = ExportViewModel.FileTypesFilter
+                    Filter = ExportOptionsViewModel.FileTypesFilter
                 };
                 if (saveFileDialog.ShowDialog() != true) return;
 
                 switch (Path.GetExtension(saveFileDialog.FileName))
                 {
                     case ".xlsx":
-                        ExportOptionsExcelWindow exportOptionsExcelWindow =
-                            new ExportOptionsExcelWindow(schedules.ToList(), saveFileDialog.FileName)  //TODO: base class for export options
-                                { Owner = this };                                                                     
-                        exportOptionsExcelWindow.ShowDialog();
+                        ExcelExportOptionsWindow excelExportOptionsWindow =
+                            new ExcelExportOptionsWindow(schedules.ToList(),
+                                    saveFileDialog.FileName) //TODO: base window? for export options
+                                { Owner = this };
+                        excelExportOptionsWindow.ShowDialog();
                         return;
                 }
-            
-                /*
-                ExportOptionsExcelWindow exportWindow = new ExportOptionsExcelWindow(ScheduleChartViewModel.Schedules) { Owner = this };
-                exportWindow.ShowDialog();*/
-                
             }
             catch (Exception exception)
             {
@@ -201,7 +194,6 @@ namespace MachineScheduler.UI
                 }
                 catch (ArgumentException exception)
                 {
-
                     throw;
                 }
             }
@@ -218,8 +210,11 @@ namespace MachineScheduler.UI
             if (_isNewRow)
                 _isNewRow = false;
         }
-        
-        private void OnNewItemEventHandler(object o, InitializingNewItemEventArgs e) => _isNewRow = true;
+
+        private void OnNewItemEventHandler(object o, InitializingNewItemEventArgs e)
+        {
+            _isNewRow = true;
+        }
 
         private void MainWindow_OnClosing(object sender, CancelEventArgs e)
         {
