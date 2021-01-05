@@ -16,10 +16,10 @@ namespace MachineScheduler.UI
             InitializeComponent();
             SettingsViewModel = new SettingsViewModel
             {
-                DefaultConsignmentsPath = MachineScheduler.UI.Properties.Settings.Default.DefaultConsignmentsPath,
-                DefaultMachinesPath = MachineScheduler.UI.Properties.Settings.Default.DefaultMachinesPath,
-                DefaultNomenclaturesPath = MachineScheduler.UI.Properties.Settings.Default.DefaultNomenclaturesPath,
-                DefaultOperationsPath = MachineScheduler.UI.Properties.Settings.Default.DefaultOperationsPath
+                DefaultConsignmentsPath = Properties.Settings.Default.DefaultConsignmentsPath,
+                DefaultMachinesPath = Properties.Settings.Default.DefaultMachinesPath,
+                DefaultNomenclaturesPath = Properties.Settings.Default.DefaultNomenclaturesPath,
+                DefaultOperationsPath = Properties.Settings.Default.DefaultOperationsPath
             };
             DataContext = SettingsViewModel;
         }
@@ -36,6 +36,7 @@ namespace MachineScheduler.UI
             {
                 ((StackPanel) ((Button) sender).Parent).Children.OfType<TextBox>().Single().Text =
                     _openFileDialog.FileName;
+                _openFileDialog.InitialDirectory = Path.GetDirectoryName(_openFileDialog.FileName) ?? Directory.GetCurrentDirectory();
             }
         }
 
@@ -52,11 +53,11 @@ namespace MachineScheduler.UI
 
         private void BtnSave_Click(object sender, RoutedEventArgs e)
         {
-            MachineScheduler.UI.Properties.Settings.Default.DefaultConsignmentsPath = SettingsViewModel.DefaultConsignmentsPath;
-            MachineScheduler.UI.Properties.Settings.Default.DefaultMachinesPath = SettingsViewModel.DefaultMachinesPath;
-            MachineScheduler.UI.Properties.Settings.Default.DefaultNomenclaturesPath = SettingsViewModel.DefaultNomenclaturesPath;
-            MachineScheduler.UI.Properties.Settings.Default.DefaultOperationsPath = SettingsViewModel.DefaultOperationsPath;
-            MachineScheduler.UI.Properties.Settings.Default.Save();
+            Properties.Settings.Default.DefaultConsignmentsPath = SettingsViewModel.DefaultConsignmentsPath;
+            Properties.Settings.Default.DefaultMachinesPath = SettingsViewModel.DefaultMachinesPath;
+            Properties.Settings.Default.DefaultNomenclaturesPath = SettingsViewModel.DefaultNomenclaturesPath;
+            Properties.Settings.Default.DefaultOperationsPath = SettingsViewModel.DefaultOperationsPath;
+            Properties.Settings.Default.Save();
             Close();
         }
 
