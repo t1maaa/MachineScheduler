@@ -50,7 +50,7 @@ namespace MachineScheduler.UI
         private void Draw()
         {
             if (!_scheduleChanged) return;
-            Chart.Update(true, true);
+            
             _scheduleChartViewModel.DrawStackedRow.Execute(null);
             _scheduleChanged = false;
         }
@@ -63,6 +63,7 @@ namespace MachineScheduler.UI
 
         private void ScheduleChartWindow_OnActivated(object? sender, EventArgs e)
         {
+            //Chart.Update(true, true);
             Draw();
         }
     }

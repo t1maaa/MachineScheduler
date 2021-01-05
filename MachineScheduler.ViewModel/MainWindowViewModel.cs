@@ -101,16 +101,21 @@ namespace MachineScheduler.ViewModel
 
         public static string FileTypesFilter => SupportedFiletypes.GetFilterString();
         
+        /* Detects changes in source collections and make new schedule
+         Temporary disabled due bug: When add new row in datagrid, ItemSource.CollectionChanged invoked immediately (before row has been commit with right values) =>
+         the new item in the new schedule with DEFAULT values until ItemSource.CollectionChanged invoked again*/
         private void OnInputDataChanged(object sender, PropertyChangedEventArgs eventArgs)
         {
             if (eventArgs.PropertyName.Equals("Items")) {
                 
                 _inputDataChanged = true;
                 
-                    if(MakeSchedule.CanExecute(null))
-                        MakeSchedule.Execute(null);
+                if(Schedules != null && Schedules.Count > 0) return; //Remove if bug has been fixed
+                if(MakeSchedule.CanExecute(null))
+                    MakeSchedule.Execute(null);
             }
         }
+        
         [NotifyPropertyChangedInvocator]
         private void OnPropertyChanged([CallerMemberName] string propertyName = null)
         {
