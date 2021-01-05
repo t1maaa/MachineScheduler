@@ -7,26 +7,19 @@ using MachineScheduler.DAL.Parsers;
 
 namespace MachineScheduler.ViewModel
 {
-    public class ExportViewModel
+    public abstract class ExportOptionsViewModel
     {
-        private List<MachineSchedule> Schedules { get; set; }
-        private string Filename { get; set; }
-        public ExportMode ExportMode { get; set; }
+        public object ExportMode { get; set; } //TODO: rewrite enum to Enumeration base class
         //public OrderBy //TODO: Export option order by
-        public Dictionary<ExportMode, string> ExportModeDescription { get; set; }
         private ICommand _exportSchedule;
-
-        public ExportViewModel(List<MachineSchedule> schedules)
+        protected List<MachineSchedule> Schedules { get; set; }
+        protected string Filename { get; set; }
+        
+        protected ExportOptionsViewModel(List<MachineSchedule> schedules)
         {
             Schedules = schedules;
-            ExportModeDescription = new Dictionary<ExportMode, string>()
-            {
-                {ExportMode.Merged, "Single table with aggregated schedules for all machines"},
-                {ExportMode.Paged, "Single file but each machine's schedule on a new page "},
-                {ExportMode.Splitted, "Each machine's schedule in a new file"}
-            };
         }
-        
+
         public ICommand ExportSchedule
         {
             get
@@ -34,7 +27,7 @@ namespace MachineScheduler.ViewModel
                 return _exportSchedule ??= new RelayCommand(obj =>
                 {
                     if(!string.IsNullOrWhiteSpace(Filename))
-                        new ScheduleExporterFactory().Create(Schedules, new FileInfo(Filename), ExportMode)?.Save();
+                        new ScheduleExporterFactory().Create(Schedules, new FileInfo(Filename), (ExcelExportMode)ExportMode)?.Save();
                 }, obj =>
                 {
                     if (obj is not string filename) return false;
@@ -45,7 +38,6 @@ namespace MachineScheduler.ViewModel
                 });
             }
         }
-        
         public static string FileTypesFilter => SupportedFiletypes.GetFilterString();
     }
 }

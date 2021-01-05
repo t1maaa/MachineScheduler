@@ -5,7 +5,7 @@
     /// Paged - Single file, only one machine's schedule per page 
     /// Splitted - Each machine's schedule in a new file
     /// </summary>
-    public enum ExportMode
+    public enum ExcelExportMode
     {
         /// <summary>
         /// Single table with aggregated schedules for all machines

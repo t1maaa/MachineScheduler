@@ -10,11 +10,11 @@ namespace MachineScheduler.DAL.Exporters
     public sealed class ScheduleExporterExcel : ScheduleExporter
     {
         private readonly ExcelPackage _package;
-        private readonly ExportMode _exportMode;
+        private readonly ExcelExportMode _excelExportMode;
 
-        public ScheduleExporterExcel(List<MachineSchedule> schedules, FileInfo fileInfo, ExportMode exportMode) : base(schedules, fileInfo)
+        public ScheduleExporterExcel(List<MachineSchedule> schedules, FileInfo fileInfo, ExcelExportMode excelExportMode) : base(schedules, fileInfo)
         {
-            _exportMode = exportMode; 
+            _excelExportMode = excelExportMode; 
             _package = new ExcelPackage();
         }
 
@@ -50,15 +50,15 @@ namespace MachineScheduler.DAL.Exporters
         
         public override void Save()
         {
-            switch (_exportMode)
+            switch (_excelExportMode)
             {
-                case ExportMode.Merged: 
+                case ExcelExportMode.Merged: 
                     SaveMerged();
                     return;
-                case ExportMode.Paged: 
+                case ExcelExportMode.Paged: 
                     SavePaged();
                     return;
-                case ExportMode.Splitted: 
+                case ExcelExportMode.Splitted: 
                     SaveSplitted();
                     return; 
                 default:
