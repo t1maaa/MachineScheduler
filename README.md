@@ -23,6 +23,7 @@
 ### 2. Edit tables if needed
 #### 2.1. Click "Visualize Schedule" to make the schedule and see a graphical representation
 #### 2.2 Click "Export Schedule" to make the schedule and export it to file
+#### 2.2.1 If you are asked to select an Export mode, you can hover mouse over each mode to see a hint
 
 ### 3. Set default file paths to auto open it on next launches.
 Note: File paths set thru Launch options have high priority over default file paths
